@@ -12,3 +12,7 @@ func Home(ctx *gin.Context) {
 func NoRoute(ctx *gin.Context) {
 	ctx.JSON(http.StatusNotFound, gin.H{"code": "PAGE_NOT_FOUND", "message": "Page not found"})
 }
+
+func SignUp(ctx *gin.Context) {
+	ctx.HTML(http.StatusOK, "signup.html", gin.H{})
+}
