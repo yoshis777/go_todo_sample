@@ -11,6 +11,7 @@ func main() {
 	router.Static("/assets", "./assets")
 
 	router.GET("/", routes.Home)
+	router.NoRoute(routes.NoRoute)
 
 	router.Run(":8080")
 }
