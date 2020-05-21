@@ -1,4 +1,4 @@
-module main
+module github.com/go_todo_sample
 
 go 1.14
 
