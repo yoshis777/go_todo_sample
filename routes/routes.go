@@ -6,6 +6,7 @@ import (
 )
 
 func Home(ctx *gin.Context) {
+	// ステータスコード、テンプレートファイル、ヘッダー定義
 	ctx.HTML(http.StatusOK, "index.html", gin.H{})
 }
 
@@ -15,4 +16,8 @@ func NoRoute(ctx *gin.Context) {
 
 func SignUp(ctx *gin.Context) {
 	ctx.HTML(http.StatusOK, "signup.html", gin.H{})
+}
+
+func Login(ctx *gin.Context) {
+	ctx.HTML(http.StatusOK, "login.html", gin.H{})
 }
