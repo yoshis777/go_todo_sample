@@ -80,7 +80,7 @@ func (db *DummyDatabase) GetUser(username, password string) (*DummyUserModel, er
 		return nil, errors.New("user \"" + username + "\" doesn't exists")
 	}
 
-	user := buffer.(*DummyUserModel) //ポインタの中身を取得（userがポインタ変数のため）
+	user := buffer.(*DummyUserModel) //interface型をDummyUserModelのポインタ型に変換、ポインタの中身を取得（userがポインタ変数のため）
 	if err := crypto.CompareHashAndPassword(user.Password, password); err != nil {
 		return nil, errors.New("user \"" + username + "\" doesn't exists")
 	}

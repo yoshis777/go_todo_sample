@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/go_todo_sample/helpers/sessions"
 	"github.com/go_todo_sample/routes"
 )
 
@@ -11,6 +12,10 @@ func main() {
 	//静的ファイルの事前ロード
 	router.LoadHTMLGlob("views/*.html")
 	router.Static("/assets", "./assets")
+
+	// セッションストアの初期化
+	store := sessions.NewDummyStore()
+	router.Use(sessions.StartDefaultSession(store))
 
 	// ルーティング
 	router.GET("/", routes.Home)
