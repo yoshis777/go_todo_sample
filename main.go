@@ -21,10 +21,11 @@ func main() {
 	user := router.Group("/user")
 	{
 		user.POST("/signup", routes.UserSignUp)
+		user.POST("/login", routes.UserLogin)
 	}
 
 	router.NoRoute(routes.NoRoute)
 
-	// サーバ起動
-	router.Run(":8080")
+	// サーバ起動（macのネットワーク受信設定の確認回避）
+	router.Run("127.0.0.1:8080")
 }

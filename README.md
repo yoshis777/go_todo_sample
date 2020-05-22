@@ -38,6 +38,45 @@ go get -u github.com/oxequa/realize
 realize start
 ```
 
+## 基礎整理
+### 先頭大文字(exported)
+先頭大文字の関数、メソッド、定数、変数、構造体のフィールドは、外部パッケージから参照可能となる
+
+### ポインタ
+```go
+var pointer *int // ポインタ変数（定義）
+var n int = 100 // 値を入れている
+
+pointer = &n // アドレス演算子（ポインタのアドレスを渡す）
+fmt.Println("" + pointer) //-> アドレスの値
+fmt.Println("" + *pointer) //-> 中身の値
+```
+
+```
+// ポインタによってアドレスを渡すことで、ほぼ参照渡しと同義のことができる（参照渡しは言語毎の仕組みにより安全性を考慮したポインタ渡しと同義）
+func plusOne(a int, *b int) {
+  a = a + 1 // 値渡し
+  *b = *b + 1 // ポインタ渡し（参照渡し）
+}
+
+a, b := 10, 10
+plusOne(a, b)
+
+fmt.Println(a) // ->10
+fmt.Println(b) // ->11
+```
+
+```
+// 先行したメモリの確保
+var n *int = new(int)
+
+type myStruct struct {
+    a int
+    b int
+}
+var myS *myStruct = new(myStruct)
+```
+
 ## 参考文献
 * [Webアプリ初心者がGo言語でサーバサイド（1. 簡単なHTTPサーバの実装）](https://qiita.com/wsuzume/items/75d5c0cd2dd5a1963b9e)
 * [Go Web プログラミング](https://astaxie.gitbooks.io/build-web-application-with-golang/ja/)

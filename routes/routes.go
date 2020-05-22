@@ -1,10 +1,13 @@
 package routes
 
+// ほぼcontrollerに近そう
+
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
+// 先頭大文字で外部パッケージから可視
 func Home(ctx *gin.Context) {
 	// ステータスコード、テンプレートファイル、ヘッダー定義
 	ctx.HTML(http.StatusOK, "index.html", gin.H{})
