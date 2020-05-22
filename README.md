@@ -17,11 +17,6 @@ go mod init go_todo_sample
 
 go get github.com/gin-gonic/gin
 go run main.go
-
-# realize（ホットリロード）の導入 https://github.com/oxequa/realize/issues/253
-# GO111MODULE=off go get github.com/oxequa/realize 解決しない
-
-
 ```
 
 ## realize（ホットリロード）の導入
@@ -52,7 +47,7 @@ fmt.Println("" + pointer) //-> アドレスの値
 fmt.Println("" + *pointer) //-> 中身の値
 ```
 
-```
+```go
 // ポインタによってアドレスを渡すことで、ほぼ参照渡しと同義のことができる（参照渡しは言語毎の仕組みにより安全性を考慮したポインタ渡しと同義）
 func plusOne(a int, *b int) {
   a = a + 1 // 値渡し
@@ -66,7 +61,7 @@ fmt.Println(a) // ->10
 fmt.Println(b) // ->11
 ```
 
-```
+```go
 // 先行したメモリの確保
 var n *int = new(int)
 
@@ -76,6 +71,10 @@ type myStruct struct {
 }
 var myS *myStruct = new(myStruct)
 ```
+
+### ゼロ値
+goの変数は必ず初期化され、型それぞれの初期値が代入される
+https://qiita.com/tenntenn/items/c55095585af64ca28ab5
 
 ## 参考文献
 * [Webアプリ初心者がGo言語でサーバサイド（1. 簡単なHTTPサーバの実装）](https://qiita.com/wsuzume/items/75d5c0cd2dd5a1963b9e)
