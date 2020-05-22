@@ -27,6 +27,7 @@ func main() {
 	{
 		user.POST("/signup", routes.UserSignUp)
 		user.POST("/login", routes.UserLogin)
+		user.POST("/logout", routes.UserLogOut)
 	}
 
 	router.NoRoute(routes.NoRoute)

@@ -81,3 +81,7 @@ func (s *DummySession) Delete(key string) {
 func (s *DummySession) Save() error {
 	return s.store.Save(s.request, s.writer, s)
 }
+
+func (s *DummySession) Terminate() {
+	s.store.Delete(s.ID)
+}
